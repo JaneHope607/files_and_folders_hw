@@ -19,23 +19,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
     @JsonIgnoreProperties({"users"})
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(
-            name = "users_folders",
-            joinColumns = { @JoinColumn(
-                    name = "user_id",
-                    nullable = false,
-                    updatable = false
-            )},
-            inverseJoinColumns = { @JoinColumn(
-                    name = "folder_id",
-                    nullable = false,
-                    updatable = false
-            )}
-    )
-
+    @OneToMany(mappedBy = "user")
     private List<Folder> folders;
 
     public User(String name) {
