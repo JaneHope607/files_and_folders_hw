@@ -1,33 +1,31 @@
 package com.codeclan.example.files_and_folders.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.codeclan.example.files_and_folders.models.Folder;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "files")
+@Table(name= "files")
 public class File {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name= "name")
     private String name;
 
-    @Column(name = "extension")
+    @Column(name= "extension")
     private String extension;
 
-    @Column(name = "size")
-    private String size;
+    @Column(name= "size")
+    private int size;
 
-    @JsonIgnoreProperties({"files"})
     @ManyToOne
-    @JoinColumn(name = "folder_id",
-    nullable = false)
+    @JoinColumn(name="folder_id", nullable=false)
     private Folder folder;
 
-    public File(String name, String extension, String size, Folder folder) {
+    public File(String name, String extension, int size, Folder folder) {
         this.name = name;
         this.extension = extension;
         this.size = size;
@@ -35,6 +33,7 @@ public class File {
     }
 
     public File() {
+
     }
 
     public Long getId() {
@@ -61,11 +60,11 @@ public class File {
         this.extension = extension;
     }
 
-    public String getSize() {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(String size) {
+    public void setSize(int size) {
         this.size = size;
     }
 
