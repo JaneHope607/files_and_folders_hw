@@ -2,7 +2,6 @@ package com.codeclan.example.files_and_folders.controllers;
 
 import com.codeclan.example.files_and_folders.models.File;
 import com.codeclan.example.files_and_folders.repositories.FileRepository;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +22,7 @@ public class FileController {
 
     @GetMapping(value = "/files/{id}")
     public ResponseEntity getPirate(@PathVariable Long id) {
-        return new ResponseEntity(fileRepository.findById(id), HttpStatus.OK);
+        return new ResponseEntity<>(fileRepository.findById(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/files")

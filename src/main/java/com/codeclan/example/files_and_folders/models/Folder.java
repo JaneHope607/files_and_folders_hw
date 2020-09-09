@@ -16,11 +16,12 @@ import java.util.List;
         @Column(name= "title")
         private String title;
 
+        @JsonIgnoreProperties({"folders"})
         @ManyToOne
         @JoinColumn(name= "user_id", nullable= false)
         private User user;
 
-        @JsonIgnoreProperties({"folder"})
+        @JsonIgnoreProperties({"folders"})
         @OneToMany(mappedBy = "folder")
         private List<File> files;
 
@@ -31,7 +32,6 @@ import java.util.List;
         }
 
         public Folder() {
-
         }
 
         public Long getId() {

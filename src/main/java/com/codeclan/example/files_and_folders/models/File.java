@@ -1,6 +1,7 @@
 package com.codeclan.example.files_and_folders.models;
 
 import com.codeclan.example.files_and_folders.models.Folder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -21,6 +22,7 @@ public class File {
     @Column(name= "size")
     private int size;
 
+    @JsonIgnoreProperties({"files"})
     @ManyToOne
     @JoinColumn(name="folder_id", nullable=false)
     private Folder folder;
@@ -33,7 +35,6 @@ public class File {
     }
 
     public File() {
-
     }
 
     public Long getId() {

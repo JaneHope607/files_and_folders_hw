@@ -19,7 +19,7 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties({"user"})
+    @JsonIgnoreProperties({"users"})
     @OneToMany(mappedBy = "user")
     private List<Folder> folders;
 
